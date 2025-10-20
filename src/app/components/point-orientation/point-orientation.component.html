@@ -1,0 +1,30 @@
+<!-- point-orientation.component.html -->
+<div class="wrapper">
+  <h3>Orijentacija tri tačke</h3>
+  <p>Klikni tri puta na platno da dodaš tačke. Nakon treće tačke pojavit će se rezultat.</p>
+
+  <!-- Do NOT set CSS width/height here; TS sets pixel size in ngOnInit -->
+  <canvas
+    #canvas
+    (click)="klikNacanvas($event)"
+    class="board"
+  ></canvas>
+
+  <div><strong>Broj odabranih tačaka:</strong> {{ tacke.length }}</div>
+
+  <!-- Modal -->
+  <div *ngIf="prikaziModal" class="modal-backdrop">
+    <div class="modal">
+      <h4>Rezultat</h4>
+      <p>
+        Poligon (t1 → t2 → t3) je
+        <strong>
+          {{ jeU_smjeruKazaljke ? 'u smjeru kazaljke na satu' : 'u suprotnom smjeru od kazaljke na satu' }}
+        </strong>.
+      </p>
+      <div class="actions">
+        <button (click)="zatvoriModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

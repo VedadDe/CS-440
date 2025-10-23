@@ -13,6 +13,7 @@ import { PointOrientationComponent } from './components/point-orientation/point-
 import { ConvexCheckComponent } from './components/convex-check/convex-check.component';
 import { JarvisMarchComponent } from './components/jarvis-march/jarvis-march.component';
 import { TriangulationComponent } from './components/triangulation/triangulation.component';
+import { Zadaca1Component } from './components/zadaca1/zadaca1.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TriangulationComponent } from './components/triangulation/triangulation
     PointOrientationComponent,
     ConvexCheckComponent,
     JarvisMarchComponent,
-    TriangulationComponent
+    TriangulationComponent,
+    Zadaca1Component
   ],
   imports: [
     BrowserModule,

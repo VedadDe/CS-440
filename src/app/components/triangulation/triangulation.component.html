@@ -7,7 +7,6 @@
         </button>
         <input [(ngModel)]="n" type="number" min="3" placeholder="Unesite broj tačaka (n)" style="padding: 5px; margin: 2px" />
         <button (click)="generisiPoligon()" style="padding: 5px; margin: 2px">Kreiraj poligon</button>
-        <button (click)="orjentacijaPoligona()" style="padding: 5px; margin: 2px">Ispitaj orijentaciju poligona</button>
         <button (click)="generisiIIspitajNTacaka()" style="padding: 5px; margin: 2px">Generiši niz 1000 tačaka i provjeri koje su u poligonu</button>
         <canvas #polygonCanvas style="border: 1px solid black; cursor: pointer;" (click)="onCanvasClick($event)"></canvas>
     </div>

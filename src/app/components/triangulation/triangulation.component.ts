@@ -164,28 +164,6 @@ export class TriangulationComponent implements AfterViewInit {
     return false;
   }
 
-  orjentacijaPoligona() {
-    const n = this.tacke.length;
-    let povrsina = 0;
-
-    for (let i = 0; i < n; i++) {
-      const j = (i + 1) % n;
-      povrsina += (this.tacke[i].x * this.tacke[j].y) - (this.tacke[j].x * this.tacke[i].y);
-    }
-
-    console.log(`Izračunata površina: ${povrsina}`);
-    if (povrsina < 0) {
-      alert('Poligon je u smjeru kazaljke na satu.');
-      console.log('Poligon je u smjeru kazaljke na satu.');
-    } else if (povrsina > 0) {
-      alert('Poligon je u smjeru suprotnom od kazaljke na satu.');
-      console.log('Poligon je u smjeru suprotnom od kazaljke na satu.');
-    } else {
-      alert('Poligon nije definisan.');
-      console.log('Poligon nije definisan.');
-    }
-  }
-
   generisiIIspitajNTacaka(): void {
     const slucajneTacke = this.generisiRandomtacke(1000);
     console.log('Generisano 1000 nasumičnih tačaka za ispitivanje.');

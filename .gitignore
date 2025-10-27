@@ -40,3 +40,27 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+# Node / Angular
+node_modules/
+dist/
+# Angular cache (optional)
+.angular/
+# Editors
+.vscode/
+.idea/
+
+# Firebase local cache
+.firebase/
+
+# Env & secrets
+.env
+.env.*
+*.env
+*.secret.*
+*secret*.json
+serviceAccount*.json
+*.key.json
+
+# OS cruft
+.DS_Store
+Thumbs.db

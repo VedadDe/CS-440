@@ -9,6 +9,7 @@ import { ConvexCheckComponent } from './components/convex-check/convex-check.com
 import { JarvisMarchComponent } from './components/jarvis-march/jarvis-march.component';
 import { TriangulationComponent } from './components/triangulation/triangulation.component';
 import {Zadaca1Component} from './components/zadaca1/zadaca1.component'
+import { DelaunayComponent } from './components/delaunay/delaunay.component';
 
 const routes: Routes = [  
 { path: 'point-segment', component: PointSegmentComponent },//
@@ -20,6 +21,7 @@ const routes: Routes = [
 { path: 'point-triangle', component: PointInsideTriangleComponent},//
 { path: 'polygon', component: TriangulationComponent},//
 { path: 'zadaca1', component: Zadaca1Component},//
+{ path: 'delone', component: DelaunayComponent},//
 ];
 
 @NgModule({

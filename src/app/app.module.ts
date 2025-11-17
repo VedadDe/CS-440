@@ -14,6 +14,7 @@ import { ConvexCheckComponent } from './components/convex-check/convex-check.com
 import { JarvisMarchComponent } from './components/jarvis-march/jarvis-march.component';
 import { TriangulationComponent } from './components/triangulation/triangulation.component';
 import { Zadaca1Component } from './components/zadaca1/zadaca1.component';
+import { DelaunayComponent } from './components/delaunay/delaunay.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Zadaca1Component } from './components/zadaca1/zadaca1.component';
     ConvexCheckComponent,
     JarvisMarchComponent,
     TriangulationComponent,
-    Zadaca1Component
+    Zadaca1Component,
+    DelaunayComponent
   ],
   imports: [
     BrowserModule,

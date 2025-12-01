@@ -10,6 +10,8 @@ import { JarvisMarchComponent } from './components/jarvis-march/jarvis-march.com
 import { TriangulationComponent } from './components/triangulation/triangulation.component';
 import {Zadaca1Component} from './components/zadaca1/zadaca1.component'
 import { DelaunayComponent } from './components/delaunay/delaunay.component';
+import { VoronoiDiagramComponent } from './components/voronoi-diagram/voronoi-diagram.component';
+
 
 const routes: Routes = [  
 { path: 'point-segment', component: PointSegmentComponent },//
@@ -22,6 +24,7 @@ const routes: Routes = [
 { path: 'polygon', component: TriangulationComponent},//
 { path: 'zadaca1', component: Zadaca1Component},//
 { path: 'delone', component: DelaunayComponent},//
+{ path: 'bsp', component: VoronoiDiagramComponent},//
 ];
 
 @NgModule({

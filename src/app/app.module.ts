@@ -15,6 +15,7 @@ import { JarvisMarchComponent } from './components/jarvis-march/jarvis-march.com
 import { TriangulationComponent } from './components/triangulation/triangulation.component';
 import { Zadaca1Component } from './components/zadaca1/zadaca1.component';
 import { DelaunayComponent } from './components/delaunay/delaunay.component';
+import { VoronoiDiagramComponent } from './components/voronoi-diagram/voronoi-diagram.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DelaunayComponent } from './components/delaunay/delaunay.component';
     JarvisMarchComponent,
     TriangulationComponent,
     Zadaca1Component,
-    DelaunayComponent
+    DelaunayComponent,
+    VoronoiDiagramComponent
   ],
   imports: [
     BrowserModule,

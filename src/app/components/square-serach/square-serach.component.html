@@ -1,0 +1,13 @@
+<div>
+    <button (click)="naivnaPretraga()">Naivna pretraga</button>
+    <button (click)="projekcijskaPretraga()">Projekciska metoda</button>
+  </div>
+  
+  <canvas #mojePlatno width="600" height="600" style="border:1px solid gray;">
+  </canvas>
+  
+  <div>
+    <p>Naivnom metodom pronađeno: {{ naivneUnutrasnjeTacke.length }}</p>
+    <p>Projekcijskom metodom pronađeno: {{ projekcijskeUnutrasnjeTacke.length }}</p>
+  </div>
+  

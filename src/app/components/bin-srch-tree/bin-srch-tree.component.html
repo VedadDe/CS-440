@@ -1,0 +1,23 @@
+<div>
+    <canvas
+      #mojePlatno
+      [width]="sirinaPlatna"
+      [height]="visinaPlatna"
+      style="border: 1px solid #000;"
+    ></canvas>
+</div>
+
+<div style="margin-top: 10px;">
+    <button (click)="dodajVrijednost(10)">Umetni 10</button>
+    <button (click)="dodajVrijednost(5)">Umetni 5</button>
+    <button (click)="dodajVrijednost(15)">Umetni 15</button>
+    <button (click)="dodajVrijednost(2)">Umetni 2</button>
+    <button (click)="dodajVrijednost(7)">Umetni 7</button>
+    <button (click)="dodajVrijednost(12)">Umetni 12</button>
+    <button (click)="dodajVrijednost(17)">Umetni 17</button>
+</div>
+
+<div style="margin-top: 10px;">
+    <button (click)="pretraziCvor(7)">Pronađi 7</button>
+    <button (click)="pretraziCvor(15)">Pronađi 15</button>
+</div>

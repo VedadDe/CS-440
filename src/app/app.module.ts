@@ -16,6 +16,10 @@ import { TriangulationComponent } from './components/triangulation/triangulation
 import { Zadaca1Component } from './components/zadaca1/zadaca1.component';
 import { DelaunayComponent } from './components/delaunay/delaunay.component';
 import { VoronoiDiagramComponent } from './components/voronoi-diagram/voronoi-diagram.component';
+import { BinSrchTreeComponent } from './components/bin-srch-tree/bin-srch-tree.component';
+import { GridComponent } from './components/grid/grid.component';
+import { KdtreeComponent } from './components/kdtree/kdtree.component';
+import { SquareSerachComponent } from './components/square-serach/square-serach.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { VoronoiDiagramComponent } from './components/voronoi-diagram/voronoi-di
     TriangulationComponent,
     Zadaca1Component,
     DelaunayComponent,
-    VoronoiDiagramComponent
+    VoronoiDiagramComponent,
+    BinSrchTreeComponent,
+    GridComponent,
+    KdtreeComponent,
+    SquareSerachComponent
   ],
   imports: [
     BrowserModule,

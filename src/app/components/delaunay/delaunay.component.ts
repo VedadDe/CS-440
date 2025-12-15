@@ -35,6 +35,14 @@ function jednakeIvice(ivica1: { t1: Tacka; t2: Tacka }, ivica2: { t1: Tacka; t2:
   );
 }
 
+function izracunajCentarOpisanogKruga(trougao: Trougao): Tacka {
+  const { t1, t2, t3 } = trougao;
+  const D = 2 * (t1.x * (t2.y - t3.y) + t2.x * (t3.y - t1.y) + t3.x * (t1.y - t2.y));
+  const centarX = ((t1.x * t1.x + t1.y * t1.y) * (t2.y - t3.y) + (t2.x * t2.x + t2.y * t2.y) * (t3.y - t1.y) + (t3.x * t3.x + t3.y * t3.y) * (t1.y - t2.y)) / D;
+  const centarY = ((t1.x * t1.x + t1.y * t1.y) * (t3.x - t2.x) + (t2.x * t2.x + t2.y * t2.y) * (t1.x - t3.x) + (t3.x * t3.x + t3.y * t3.y) * (t2.x - t1.x)) / D;
+  return { x: centarX, y: centarY };
+}
+
 @Component({
   selector: 'app-delaunay',
   templateUrl: './delaunay.component.html',
@@ -86,6 +94,9 @@ export class DelaunayComponent implements AfterViewInit {
       this.kontekst.arc(tacka.x, tacka.y, 2, 0, Math.PI * 2);
       this.kontekst.fill();
     }
+
+    this.crtajVoronoiCelije();
+    // this.crtajOpisaneKrugove();
   }
   pronadjiTrougaoSaZajednickomIvicom(t1: Tacka, t2: Tacka, iskljucenaTacka: Tacka): Trougao | null {
     for (let trougao of this.trouglovi) {
@@ -178,8 +189,6 @@ export class DelaunayComponent implements AfterViewInit {
           }
         }
       }
-      
-
       // Ukloni loše trouglove
       this.trouglovi = this.trouglovi.filter(trougao => !losiTrouglovi.includes(trougao));
 
@@ -203,5 +212,59 @@ export class DelaunayComponent implements AfterViewInit {
         ![superTrougao.t1, superTrougao.t2, superTrougao.t3].includes(trougao.t2) &&
         ![superTrougao.t1, superTrougao.t2, superTrougao.t3].includes(trougao.t3);
     });
+  }
+
+  crtajVoronoiCelije() {
+    for (const tacka of this.tacke) {
+      // 1. Pronađi sve trouglove koji imaju ovu tačku kao vrh.
+      const relevantniTrouglovi = this.trouglovi.filter(trougao =>
+        (trougao.t1 === tacka) || (trougao.t2 === tacka) || (trougao.t3 === tacka)
+      );
+
+      if (relevantniTrouglovi.length < 1) continue;
+
+      // 2. Izračunaj centre opisanih kružnica (ovo su vrhovi Voronoi ćelije).
+      const voronoiVrhovi = relevantniTrouglovi.map(trougao => izracunajCentarOpisanogKruga(trougao));
+
+      // 3. Sortiraj vrhove po uglu oko centralne tačke.
+      voronoiVrhovi.sort((a, b) => {
+        const ugaoA = Math.atan2(a.y - tacka.y, a.x - tacka.x);
+        const ugaoB = Math.atan2(b.y - tacka.y, b.x - tacka.x);
+        return ugaoA - ugaoB;
+      });
+
+      // 4. Iscrtaj i popuni Voronoi ćeliju.
+      this.kontekst.beginPath();
+      this.kontekst.moveTo(voronoiVrhovi[0].x, voronoiVrhovi[0].y);
+      for (let i = 1; i < voronoiVrhovi.length; i++) {
+        this.kontekst.lineTo(voronoiVrhovi[i].x, voronoiVrhovi[i].y);
+      }
+      this.kontekst.closePath();
+
+      this.kontekst.strokeStyle = 'rgba(0, 100, 0, 0.5)';
+      this.kontekst.stroke();
+    }
+  }
+
+  /**
+   * TEST: Iscrtava opisane kružnice i njihove centre za sve trouglove.
+   */
+  crtajOpisaneKrugove() {
+    this.kontekst.strokeStyle = 'rgba(255, 165, 0, 0.4)';
+    this.kontekst.fillStyle = 'orange';
+    this.kontekst.lineWidth = 1;
+
+    for (const trougao of this.trouglovi) {
+      const centar = izracunajCentarOpisanogKruga(trougao);
+      const radijus = Math.sqrt(Math.pow(trougao.t1.x - centar.x, 2) + Math.pow(trougao.t1.y - centar.y, 2));
+
+      this.kontekst.beginPath();
+      this.kontekst.arc(centar.x, centar.y, radijus, 0, 2 * Math.PI);
+      this.kontekst.stroke();
+
+      this.kontekst.beginPath();
+      this.kontekst.arc(centar.x, centar.y, 2, 0, 2 * Math.PI);
+      this.kontekst.fill();
+    }
   }
 }

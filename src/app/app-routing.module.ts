@@ -16,6 +16,7 @@ import { BinSrchTreeComponent } from './components/bin-srch-tree/bin-srch-tree.c
 import { GridComponent } from './components/grid/grid.component';
 import { SquareSerachComponent } from './components/square-serach/square-serach.component';
 import { KdtreeComponent } from './components/kdtree/kdtree.component';
+import { PathPlanningComponent } from './components/path-planning/path-planning.component';
 
 const routes: Routes = [  
 { path: 'point-segment', component: PointSegmentComponent },//
@@ -33,6 +34,7 @@ const routes: Routes = [
 { path: 'grid-search', component: GridComponent},//
 { path: 'square-search', component: SquareSerachComponent},//
 { path: 'kd-tree', component: KdtreeComponent},//
+{ path: 'planiranje-puta', component: PathPlanningComponent},//
 ];
 
 @NgModule({
